@@ -14,7 +14,6 @@ const routes: Routes = [
   {path: 'dashboard', component: DashboardComponent},
   {path: 'create_new_poll', component: CreatePollComponent},
   {path: 'survey/:id', component: SurveyPollComponent},
-  {path: 'up_vote1/:id', component: SurveyPollComponent},
   {path: 'polls', component:DashboardComponent},
 
   

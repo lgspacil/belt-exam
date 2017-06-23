@@ -29,7 +29,19 @@ export class HttpService {
 
 
   upVote1(id){
-    return this._http.get('/up_vote1', id).map((data) => data.json()).toPromise()
+    return this._http.post('/up_vote1', {id:id}).map((data) => data.json()).toPromise()
+  }
+
+  upVote2(id){
+    return this._http.post('/up_vote2', {id:id}).map((data) => data.json()).toPromise()
+  }
+
+  upVote3(id){
+    return this._http.post('/up_vote3', {id:id}).map((data) => data.json()).toPromise()
+  }
+
+  upVote4(id){
+    return this._http.post('/up_vote4', {id:id}).map((data) => data.json()).toPromise()
   }
 
 }

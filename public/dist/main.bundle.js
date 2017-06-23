@@ -345,7 +345,6 @@ var routes = [
     { path: 'dashboard', component: __WEBPACK_IMPORTED_MODULE_2_app_dashboard_dashboard_component__["a" /* DashboardComponent */] },
     { path: 'create_new_poll', component: __WEBPACK_IMPORTED_MODULE_3_app_create_poll_create_poll_component__["a" /* CreatePollComponent */] },
     { path: 'survey/:id', component: __WEBPACK_IMPORTED_MODULE_4_app_survey_poll_survey_poll_component__["a" /* SurveyPollComponent */] },
-    { path: 'up_vote1/:id', component: __WEBPACK_IMPORTED_MODULE_4_app_survey_poll_survey_poll_component__["a" /* SurveyPollComponent */] },
     { path: 'polls', component: __WEBPACK_IMPORTED_MODULE_2_app_dashboard_dashboard_component__["a" /* DashboardComponent */] },
 ];
 var AppRoutingModule = (function () {
@@ -756,7 +755,16 @@ var HttpService = (function () {
         return this._http.get("/poll/" + id).map(function (data) { return data.json(); }).toPromise();
     };
     HttpService.prototype.upVote1 = function (id) {
-        return this._http.get('/up_vote1', id).map(function (data) { return data.json(); }).toPromise();
+        return this._http.post('/up_vote1', { id: id }).map(function (data) { return data.json(); }).toPromise();
+    };
+    HttpService.prototype.upVote2 = function (id) {
+        return this._http.post('/up_vote2', { id: id }).map(function (data) { return data.json(); }).toPromise();
+    };
+    HttpService.prototype.upVote3 = function (id) {
+        return this._http.post('/up_vote3', { id: id }).map(function (data) { return data.json(); }).toPromise();
+    };
+    HttpService.prototype.upVote4 = function (id) {
+        return this._http.post('/up_vote4', { id: id }).map(function (data) { return data.json(); }).toPromise();
     };
     return HttpService;
 }());
@@ -791,7 +799,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/survey-poll/survey-poll.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"survey\">\n\n  <!--{{selected_poll | json }}-->\n\n  <a [routerLink] =\"['/polls']\">Go To Polls</a>\n\n  <p>Click the Voute button to choose one</p>\n\n\n    <table class=\"table table-striped\">\n      <thead>\n        <tr>\n          <th>Option</th>\n          <th>Current Count Votes</th>\n          <th>Action</th>\n        </tr>\n      </thead>\n      <tbody *ngFor='let select of selected_poll'>\n      <tr>\n        <td>{{ select.option_1 }}</td>\n        <td>{{select.vote_count_1}}</td>\n        <td><button (click)=\"vote1(select._id)\">Vote</button></td>\n      </tr>\n      <tr>\n        <td>{{ select.option_2 }}</td>\n        <td>{{select.vote_count_2}}</td>\n        <td><button (click)=\"vote2(select._id)\">Vote</button></td>\n      </tr>\n      <tr>\n        <td>{{ select.option_3 }}</td>\n        <td>{{select.vote_count_3}}</td>\n        <td><button (click)=\"vote3(select._id)\">Vote</button></td>\n      </tr>\n      <tr>\n        <td>{{ select.option_4 }}</td>\n        <td>{{select.vote_count_4}}</td>\n        <td><button (click)=\"vote4(select._id)\">Vote</button></td>\n      </tr>\n\n\n      </tbody>\n    </table>\n\n\n\n\n\n\n\n\n\n</div>\n"
+module.exports = "<div class=\"survey\">\n\n  <!--{{selected_poll | json }}-->\n\n  <a [routerLink] =\"['/polls']\">Go To Polls</a>\n\n  <p>Click the Voute button to choose one</p>\n\n\n    <table class=\"table table-striped\">\n      <thead>\n        <tr>\n          <th>Option</th>\n          <th>Current Count Votes</th>\n          <th>Action</th>\n        </tr>\n      </thead>\n      <tbody *ngFor='let select of selected_poll'>\n      <tr>\n        <td>{{ select.option_1 }}</td>\n        <td>{{select.vote_count_1}}</td>\n        <td><button (click)=\"upVote1(select._id)\">Vote</button></td>\n      </tr>\n      <tr>\n        <td>{{ select.option_2 }}</td>\n        <td>{{select.vote_count_2}}</td>\n        <td><button (click)=\"upVote2(select._id)\">Vote</button></td>\n      </tr>\n      <tr>\n        <td>{{ select.option_3 }}</td>\n        <td>{{select.vote_count_3}}</td>\n        <td><button (click)=\"upVote3(select._id)\">Vote</button></td>\n      </tr>\n      <tr>\n        <td>{{ select.option_4 }}</td>\n        <td>{{select.vote_count_4}}</td>\n        <td><button (click)=\"upVote4(select._id)\">Vote</button></td>\n      </tr>\n\n\n      </tbody>\n    </table>\n\n\n\n\n\n\n\n\n\n</div>\n"
 
 /***/ }),
 
@@ -849,10 +857,46 @@ var SurveyPollComponent = (function () {
             console.log("we got an error!");
         });
     };
-    SurveyPollComponent.prototype.vote1 = function (id) {
+    SurveyPollComponent.prototype.upVote1 = function (id) {
         var _this = this;
-        console.log(id);
-        this._httpService.upVote1(this.poll_id)
+        // console.log("inside survey.co: ", id)
+        this._httpService.upVote1(id)
+            .then(function (data) {
+            console.log("we upvoted");
+            _this.loadOnePoll();
+        })
+            .catch(function (err) {
+            console.log("there is an error");
+        });
+    };
+    SurveyPollComponent.prototype.upVote2 = function (id) {
+        var _this = this;
+        // console.log("inside survey.co: ", id)
+        this._httpService.upVote2(id)
+            .then(function (data) {
+            console.log("we upvoted");
+            _this.loadOnePoll();
+        })
+            .catch(function (err) {
+            console.log("there is an error");
+        });
+    };
+    SurveyPollComponent.prototype.upVote3 = function (id) {
+        var _this = this;
+        // console.log("inside survey.co: ", id)
+        this._httpService.upVote3(id)
+            .then(function (data) {
+            console.log("we upvoted");
+            _this.loadOnePoll();
+        })
+            .catch(function (err) {
+            console.log("there is an error");
+        });
+    };
+    SurveyPollComponent.prototype.upVote4 = function (id) {
+        var _this = this;
+        // console.log("inside survey.co: ", id)
+        this._httpService.upVote4(id)
             .then(function (data) {
             console.log("we upvoted");
             _this.loadOnePoll();

@@ -41,9 +41,45 @@ export class SurveyPollComponent implements OnInit {
       })
   }
 
-  vote1(id){
-    console.log(id)
-    this._httpService.upVote1(this.poll_id)
+  upVote1(id){
+    // console.log("inside survey.co: ", id)
+    this._httpService.upVote1(id)
+      .then((data) =>{
+        console.log("we upvoted")
+        this.loadOnePoll();
+      })
+      .catch((err) =>{
+        console.log("there is an error")
+      })
+  }
+
+   upVote2(id){
+    // console.log("inside survey.co: ", id)
+    this._httpService.upVote2(id)
+      .then((data) =>{
+        console.log("we upvoted")
+        this.loadOnePoll();
+      })
+      .catch((err) =>{
+        console.log("there is an error")
+      })
+  }
+
+   upVote3(id){
+    // console.log("inside survey.co: ", id)
+    this._httpService.upVote3(id)
+      .then((data) =>{
+        console.log("we upvoted")
+        this.loadOnePoll();
+      })
+      .catch((err) =>{
+        console.log("there is an error")
+      })
+  }
+
+   upVote4(id){
+    // console.log("inside survey.co: ", id)
+    this._httpService.upVote4(id)
       .then((data) =>{
         console.log("we upvoted")
         this.loadOnePoll();

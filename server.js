@@ -175,27 +175,54 @@ app.get("/poll/:id", function(req, res){
 	})
 })
 
-app.get("/up_vote1/:id", function(req, res){
-	console.log(req.params.id);
+app.post("/up_vote1", function(req, res){
+	console.log(req.body);
 
-	Poll.update({_id: req.params.id}, {$inc: {vote_count_1: 1}}, function(err, result){
+	Poll.update({_id: req.body.id}, {$inc: {vote_count_1: 1}}, function(err, result){
 		if(err){
 			console.log("error adding")
 		}else{
-			return res.json(true)
+			return res.json(result)
 		}
 	})
 })
 
-// app.get("/user/:id", function(req, res){
-// 	User.findOne({_id: req.params.id}, function(err, result){
-// 		if(err){
-// 			console.log("error!");
-// 		}else{
-// 			return res.json(result);
-// 		}
-// 	})
-// })
+app.post("/up_vote2", function(req, res){
+	console.log(req.body);
+
+	Poll.update({_id: req.body.id}, {$inc: {vote_count_2: 1}}, function(err, result){
+		if(err){
+			console.log("error adding")
+		}else{
+			return res.json(result)
+		}
+	})
+})
+
+app.post("/up_vote3", function(req, res){
+	console.log(req.body);
+
+	Poll.update({_id: req.body.id}, {$inc: {vote_count_3: 1}}, function(err, result){
+		if(err){
+			console.log("error adding")
+		}else{
+			return res.json(result)
+		}
+	})
+})
+
+app.post("/up_vote4", function(req, res){
+	console.log(req.body);
+
+	Poll.update({_id: req.body.id}, {$inc: {vote_count_4: 1}}, function(err, result){
+		if(err){
+			console.log("error adding")
+		}else{
+			return res.json(result)
+		}
+	})
+})
+
 
 
 
