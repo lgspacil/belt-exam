@@ -1,0 +1,52 @@
+<div class="survey">
+
+  <!--{{selected_poll | json }}-->
+
+  <a [routerLink] ="['/polls']">Go To Polls</a>
+
+  <p>Click the Voute button to choose one</p>
+
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Option</th>
+          <th>Current Count Votes</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody *ngFor='let select of selected_poll'>
+      <tr>
+        <td>{{ select.option_1 }}</td>
+        <td>{{select.vote_count_1}}</td>
+        <td><button (click)="vote1(select._id)">Vote</button></td>
+      </tr>
+      <tr>
+        <td>{{ select.option_2 }}</td>
+        <td>{{select.vote_count_2}}</td>
+        <td><button (click)="vote2(select._id)">Vote</button></td>
+      </tr>
+      <tr>
+        <td>{{ select.option_3 }}</td>
+        <td>{{select.vote_count_3}}</td>
+        <td><button (click)="vote3(select._id)">Vote</button></td>
+      </tr>
+      <tr>
+        <td>{{ select.option_4 }}</td>
+        <td>{{select.vote_count_4}}</td>
+        <td><button (click)="vote4(select._id)">Vote</button></td>
+      </tr>
+
+
+      </tbody>
+    </table>
+
+
+
+
+
+
+
+
+
+</div>

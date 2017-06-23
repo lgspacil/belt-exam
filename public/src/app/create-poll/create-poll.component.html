@@ -1,0 +1,116 @@
+<div class="create_poll">
+  <!--{{poll_obj | json}}-->
+
+  <a [routerLink] ="['/polls']">Cancel</a>
+
+<h3>Put the question and option here:</h3>
+
+
+<form class="form-horizontal" #regForm='ngForm'>
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="question">Question:</label>
+    <div class="col-sm-10">
+      <input type="text" 
+      class="form-control" 
+      name="question" 
+      required 
+      minlength="8" 
+      [(ngModel)]="poll_obj.question"
+      #question="ngModel">
+    </div>
+  </div>
+
+   <div class="red" *ngIf='question.errors && (question.touched || regForm.submitted)'>
+    <p *ngIf='question.errors.required'>required</p>
+    <p *ngIf='question.errors.minlength'>at least 8 characters.</p>
+  </div>
+
+
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="option_1">Option 1:</label>
+    <div class="col-sm-10"> 
+      <input type="text" 
+      class="form-control" 
+      name="option_1" 
+      required 
+      minlength="3" 
+      [(ngModel)]="poll_obj.option_1"
+      #option_1="ngModel">
+    </div>
+  </div>
+
+  <div class="red" *ngIf='option_1.errors && (option_1.touched || regForm.submitted)'>
+    <p *ngIf='option_1.errors.required'>required</p>
+    <p *ngIf='option_1.errors.minlength'>at least 3 characters.</p>
+  </div>
+
+
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="option_2">Option 2:</label>
+    <div class="col-sm-10"> 
+      <input type="text" 
+      class="form-control" 
+      name="option_2" 
+      required 
+      minlength="3" 
+      [(ngModel)]="poll_obj.option_2"
+      #option_2="ngModel"
+      >
+    </div>
+  </div>
+
+   <div class="red" *ngIf='option_2.errors && (option_2.touched || regForm.submitted)'>
+    <p *ngIf='option_2.errors.required'>required</p>
+    <p *ngIf='option_2.errors.minlength'>at least 3 characters.</p>
+  </div>
+
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="option_3">Option 3:</label>
+    <div class="col-sm-10"> 
+      <input type="text" 
+      class="form-control" 
+      name="option_3" 
+      required 
+      minlength="3"
+      [(ngModel)]="poll_obj.option_3"
+      #option_3="ngModel"
+      >
+    </div>
+  </div>
+
+   <div class="red" *ngIf='option_3.errors && (option_3.touched || regForm.submitted)'>
+    <p *ngIf='option_3.errors.required'>required</p>
+    <p *ngIf='option_3.errors.minlength'>at least 3 characters.</p>
+  </div>
+
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="option_4">Option 4:</label>
+    <div class="col-sm-10"> 
+      <input type="text" 
+      class="form-control" 
+      name="option_4" 
+      required 
+      minlength="3"
+      [(ngModel)]="poll_obj.option_4"
+      #option_4="ngModel"
+      >
+    </div>
+  </div>
+
+   <div class="red" *ngIf='option_4.errors && (option_4.touched || regForm.submitted)'>
+    <p *ngIf='option_4.errors.required'>required</p>
+    <p *ngIf='option_4.errors.minlength'>at least 3 characters.</p>
+  </div>
+  
+  <div class="form-group"> 
+    <div class="col-sm-offset-2 col-sm-10">
+      <button [disabled]="!regForm.valid" type="submit" class="btn btn-default" (click)="createPoll()">Create Poll</button>
+    </div>
+  </div>
+</form>
+
+
+
+
+
+</div>

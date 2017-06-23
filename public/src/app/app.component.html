@@ -1,0 +1,21 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<div class="parent"> 
+  <h2>Parent</h2>
+
+<a [routerLink] ="['/']" (click)="logout()">Logout</a>
+  
+
+  {{username | json}}
+
+  <div *ngIf="clicked == null">
+    <form>
+      Username <input type="text" name="name" [(ngModel)]="username.name">
+      <button type="button" (click)="submitForm()">Submit</button>
+    </form>
+  </div>
+
+<router-outlet></router-outlet>
+
+
+</div>

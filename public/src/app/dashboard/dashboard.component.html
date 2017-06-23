@@ -1,0 +1,42 @@
+<div class="poll">
+
+  <a [routerLink] ="['/create_new_poll']">Create a New Poll</a>
+  <a [routerLink] ="['/']" (click)="clicked()">Logout</a>
+
+  <br><br><br>
+
+
+  <h2>Current Polls</h2>
+
+  <input type="text" name="search" placeholder="Search">
+  <br><br><br><br>
+
+  <!--{{list_of_polls | json}}-->
+
+   <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Survey Question</th>
+        <th>Date Posted</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+     <tr *ngFor='let poll of list_of_polls'>
+      <td>{{ poll.name }}</td>
+      <td><a [routerLink]="['/survey/', poll._id]">{{ poll.question }}</a></td>
+      <td>{{poll.createdAt | date:'longDate'}}</td>
+      <td *ngIf="poll.name == name">  <a [routerLink] ="['/dashboard']" (click)="deletePoll(poll._id)">Delete</a>    </td>
+    </tr>
+    </tbody>
+  </table>
+
+
+
+
+
+
+
+
+</div>
